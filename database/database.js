@@ -1,11 +1,8 @@
-//import mongoose
 const mongoose = require('mongoose');
 require('dotenv').config();
-mongoose.set('strictQuery', false); //avoid warning message
+mongoose.set('strictQuery', false); 
 
-// Create a connection function
 function connectToMongoDB() {
-
     mongoose
       .connect(process.env.MONGODB_URI)
       .then(() => {
@@ -15,6 +12,4 @@ function connectToMongoDB() {
         console.log(e);
       });
   }
-  
-  // Export the function
-  module.exports = connectToMongoDB;
+module.exports = connectToMongoDB;
