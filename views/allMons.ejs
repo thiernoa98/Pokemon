@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All pokemon</title>
+</head>
+<body>
+    
+    <h1>Here is a List of all pokemons</h1>
+    <a href="/createMon" ><h2>Create A new Pokemon</h2></a>
+    <% pokemon.forEach((poke)=>{%>
+        <h1>Pokedex No. <%=poke.PokedexNo%></h1>
+        <!-- '/oneMon/' is from the viewRouter for the oneMon path-->
+        <h2>Name: <a href="/oneMon/<%=poke.Name%>"><%=poke.Name%></a></h2>
+        <h2>Type: <%=poke.Type%></h2>
+        <ul>
+            Moves: 
+            <!-- loop through the moves since they are in an array -->
+            <%poke.Moves.forEach((move)=>{%>
+                <li><%= move %></li>
+            <%})%>
+        </ul>
+    <%})%>
+</body>
+</html>
