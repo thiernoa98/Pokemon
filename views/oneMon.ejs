@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pokemon.Name%></title>
+</head>
+<body>
+    <h1>Here is Information about <%= pokemon.Name%></h1>
+
+    <!--" /allMons" is from the viewRouter path -->
+    <a href="/allMons">Go back to all Pokemons</a>
+    <!-- we don't need to loop since we already have one pokemon -->
+
+        <h1>Pokedex No. <%= pokemon.PokedexNo %></h1>
+        <h2>Name: <%=pokemon.Name %></h2>
+        <h2>Type: <%=pokemon.Type %></h2>
+        <ul>
+            Moves: 
+            <!-- loop through the moves since they are in an array -->
+            <%pokemon.Moves.forEach((move)=>{%>
+                <li><%= move %></li>
+            <%})%>
+        </ul>
+    
+        <!-- show the updateMon page onClick, this from the viewRouter-->
+        <!-- url, localhost:8080/updateMon/:name -->
+        <a href="/updateMon/<%=pokemon.Name%>">Update this pokemon</a>
+        <br><br>
+
+        <!-- making a delete  buttons to remove the a pokemon -->
+        <!-- /api/pokemon/deleteOnepoke/:name is from api router -->
+        <!-- _method is here to overide post, so we delete  -->
+        <form action="/api/pokemon/deleteOnepoke/<%=pokemon.Name%>?_method=DELETE" method="post">
+            <input type="submit" name="_method" value="Delete Pokemon">
+        </form>
+</body>
+</html>
